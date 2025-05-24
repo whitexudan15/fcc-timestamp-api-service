@@ -28,8 +28,7 @@ app.get("/api", (req, res) => {
 
 app.get("/api/:endpoint", (req, res) => {
   const endpoint = req.params.endpoint;
-
-  if (!isNaN(parseInt(endpoint))) {
+  if (!isNaN(endpoint)) {
     const unix = parseInt(endpoint);
     const utc = new Date(unix).toUTCString();
     res.json({ unix: unix, utc: utc });
@@ -49,8 +48,3 @@ app.get("/api/:endpoint", (req, res) => {
 app.listen(process.env.PORT || 3000, () => {
   console.log("Your app is listening on port " + process.env.PORT);
 });
-
-let date = new Date("December 25, 2004");
-console.log(date.getTime());
-
-console.log(parseInt("December 25, 2005"));
